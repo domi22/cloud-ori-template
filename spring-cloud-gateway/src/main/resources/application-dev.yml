@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ebuy?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name:  com.mysql.jdbc
+    username: root
+    password: root55
+    type: com.zaxxer.hikari
+    hikari:
+      minimum-idle: 3    #池中维护的最小空闲连接数 -默认-1 配置validate -10  -minIdle<0或者minIdle>maxPoolSize,则被重置为maxPoolSize
+      auto-commit: true  #自动提交从池中返回的连接 默认true
+      idle-timeout: 10000  #连接允许在池中闲置的最长时间 -默认600000ms -如果idleTimeout+1秒>maxLifetime 且 maxLifetime>0，则会被重置为0（代表永远不会退出）；如果idleTimeout!=0且小于10秒，则会被重置为10秒
+      pool-name: DatebookHikariCP    #连接池的用户定义名称，主要出现在日志记录和JMX管理控制台中以识别池和池配置
+      max-lifetime: 1800000  #池中连接最长生命周期 默认1800000ms  -如果不等于0且小于30秒则会被重置回30分钟
+      connection-timeout: 30000  #等待来自池的连接的最大毫秒数 默认30000ms -如果小于250毫秒，则被重置回30秒
+#-----------------------------------DAO层-mybatis-2/2[开始]---------------------------------
+  cloud:
+    gateway:
+      discovery: #动态路由在前会先触发，不满足url中待服务ID的请求则触发后续的断言路由
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:   # 断言种类 After Before Between Cookie Header Host Method Query 等
+      - id: after_route
+        uri: http://baidu.com
+        predicates:
+        - Before=2019-03-11T19:11:10.647+08:00[Asia/Shanghai]
+      - id: cookie_route
+        uri: http://localhost:8883/spring-cloud-service/service/bills
+        predicates:
+        - Cookie=choose,ch
+
+      # 过滤器设置-- 请求头里面增加 header、param
+      - id: header_filter
+        uri: http://localhost:8883/spring-cloud-service/service/bills
+        filters:
+        - AddRequestHeader=NewHeader, Bar
+        - AddRequestParameter=param, paramValue
+        predicates:
+        - Before=2019-03-11T19:11:10.647+08:00[Asia/Shanghai]
+management:
+#  security:
+#    enabled: false   已经有全局开启了
+  endpoint:
+    gateway:
+      enabled: true  # 具体端点API参见 GatewayControllerEndpoint 类
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+
+
+
+
+
