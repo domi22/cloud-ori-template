@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ebuy?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://192.168.118.128:5406/domi?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useJDBCCompliantTimezoneShift=true&useSSL=false
     driver-class-name:  com.mysql.jdbc
     username: root
-    password: root55
+    password: root80
     type: com.zaxxer.hikari
     hikari:
       minimum-idle: 3    #池中维护的最小空闲连接数 -默认-1 配置validate -10  -minIdle<0或者minIdle>maxPoolSize,则被重置为maxPoolSize

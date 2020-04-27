@@ -6,10 +6,10 @@ spring:
       # 3 如果Commons DBCP可用， 我们将使用它， 但在生产环境不推荐使用它。
       # 4 最后如果Commons DBCP2可用， 我们将使用它。
 
-    url: jdbc:mysql://localhost:3306/ebuy?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://192.168.118.128:5406/domi?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useJDBCCompliantTimezoneShift=true&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver  #  new cj
     username: root
-    password: root55
+    password: root80
     type: com.zaxxer.hikari.HikariDataSource
 
     #generate-unique-name: false  # whether to generate a random datasource name

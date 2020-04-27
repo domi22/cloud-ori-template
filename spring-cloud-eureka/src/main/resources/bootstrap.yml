@@ -1,5 +1,10 @@
+spring:
+  application:
+    name: spring-cloud-eureka
+  profiles:
+    active: dev
 server:
-  port: 8881
+  port: 8889
 eureka:
   client:
     registerWithEureka: false #是否将自己注册到eureka，默认true,作为server选择false

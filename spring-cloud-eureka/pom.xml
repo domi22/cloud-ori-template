@@ -9,8 +9,8 @@
     <name>spring-cloud-eureka</name>
 
     <parent>
-        <groupId>spring.cloud</groupId>
-        <artifactId>spring-cloud</artifactId>
+        <groupId>cloud.ori.template</groupId>
+        <artifactId>cloud-ori-template</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>

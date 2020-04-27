@@ -9,8 +9,8 @@
     <name>spring-cloud-service</name>
 
     <parent>
-        <groupId>spring.cloud</groupId>
-        <artifactId>spring-cloud</artifactId>
+        <groupId>cloud.ori.template</groupId>
+        <artifactId>cloud-ori-template</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
@@ -33,11 +33,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>spring.cloud.common</groupId>
-            <artifactId>spring-cloud-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
              <groupId>org.springframework.cloud</groupId>
              <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -82,26 +77,6 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            <!-- 自动生成dao层，仅开发初期使用-->
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>${generator.version}</version>
-                <configuration>
-                    <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
-                    <verbose>true</verbose>
-                    <overwrite>true</overwrite>
-                </configuration>
-            </plugin>
         </plugins>
-        <!-- 不指定resources,则默认打包全部资源-->
-        <!--<resources>-->
-            <!--<resource>-->
-                <!--<directory>src/main/java</directory>-->
-                <!--<includes>-->
-                    <!--<include>**/*.xml</include>-->
-                <!--</includes>-->
-            <!--</resource>-->
-        <!--</resources>-->
     </build>
 </project>
